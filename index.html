@@ -33,28 +33,24 @@ ASD 1301
 	<div data-role="page" id="home" style="">
 	
 		<!--Page Header-->
-		<div data-role="header" data-theme="b" data-position="fixed">
+		<header data-role="header" data-theme="b" data-position="fixed">
     		<h1>The Recipe Vault</h1>
-		</div>
+		</header>
 		
-		<div data-role="content">
+		<section data-role="content">
 		
 			<!--Add item feature call to action-->
 	    	<div id="feature1">
 		    	<a href="#additem" Data-ajax="false" ><img id ="feature" img src="images/addrecipe.png" /></a>
 		    </div><br/>
 		    
-		    <!--Listview browse recipes (one window drilldown)-->
-		    <ul data-role="listview" Data-filter="true"><!--Moved search filter-->   
+		    <!--Listview browse recipes-->
+		    <ul data-role="listview">  
 		    	<li data-role="list-divider">Browse Recipes</li>
 		    		<li><a href= "#category">
 			    		<h2>By Category</h2>
 			    		<p>Browse Recipes By Category</p>
 			    	</a></li>
-			    	<li><a href= "#error">
-				    	<h2>By Rating</h2>
-				    	<p>Browse Recipes By Rating</p>
-				    </a></li>
 					<li><a href= "#error">
 						<h2>By Name</h2>
 						<p>Browse Recipes By Name</p>
@@ -64,27 +60,26 @@ ASD 1301
 						<p>Browse Recently Added Recipes</p>
 					</a></li>		    
 		    </ul>
-		</div>
+		</section>
 		
 		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
 					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
 				</ul>
 			</div>
-		</div>
+		</footer>
 	</div>
 	
 	<!--Add Item Page(Form)-->
 	<div data-role="page" id="additem" data-add-back-btn="true">
-		<div data-role="header" data-theme="b">
+		<header data-role="header" data-theme="b">
     		<h1>The Recipe Vault</h1>
-		</div>
+		</header>
 		
-		<div data-role="content">
+		<section data-role="content">
 		
 			<form action="" method="post" id="recipeform" data-ajax="false" >
 				<legend>Add your new recipe!</legend>
@@ -97,10 +92,6 @@ ASD 1301
 					<label for="dateadded">*Date:</label><input name="dateadded" type="date" data-role="datebox" id="dateadded" class="required" data-options='{"mode": "calbox"}'>
 				
 				<div data-role="fieldcontain">
-					<label for="rating">*Rate This Recipe (1-5):</label><input type="range" value="3" min="1" max="5" id="rating" />
-				</div>
-				
-				<div data-role="fieldcontain">
 					<fieldset data-role="controlgroup">
 						<legend>*Recipe Category:</legend>
 						<input type="radio" value="Meat" id="meat" name="category" class="required"/><label for="meat">Meat</label>
@@ -111,34 +102,7 @@ ASD 1301
 				</div>
 				
 				<div data-role="fieldcontain">
-					<label for="rtype">*Recipe Type:</label>
-					<select name="rtype" id="rtype" data-native-menu="false">
-						<option data-placeholder="true">Please Choose One</option>
-						<optgroup label="Meats">
-    						<option value="Chicken">Chicken</option>
-    						<option value="Beef">Beef</option>
-    						<option value="Pork">Pork</option>
-    						<option value="Fish">Fish</option>
-    					</optgroup>
-    					<optgroup label="Pasta">
-    						<option value="Spaghetti">Spaghetti</option>
-    						<option value="Lasagna">Lasagna</option>
-    						<option value="Pasta Salad">Pasta Salad</option>
-    						<option value="Ravioli">Ravioli</option>
-    					</optgroup>
-    					<optgroup label="Soups">
-    						<option value="Chili">Chili</option>
-    						<option value="Chowder">Chowder</option>
-    						<option value="Stew">Stew</option>
-    						<option value="Seafood">Seafood</option>
-    					</optgroup>
-    					<optgroup label="Desserts">
-    						<option value="Cake">Cake</option>
-    						<option value="Cookies">Cookies</option>
-    						<option value="Pies">Pies</option>
-    						<option value="Mousse">Mousse</option>
-    					</optgroup>
-					</select>
+					<label for="rtype">*Recipe Type:</label><input type="text" id="rtype" placeholder="Chicken, Beef, Chili, etc..." class="required" />
 				</div>
 				
 				<div data-role="fieldcontain">
@@ -154,28 +118,27 @@ ASD 1301
 					<input type="reset" value="Reset Form" data-theme="a" />
 				</div>
 			</form>
-		</div>
+		</section>
 		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
 					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
 				</ul>
 			</div>
-		</div>
+		</footer>
 	</div>
 	
 	<!--Category Page (Thumbnail)-->
 	<div data-role="page" id="category" data-add-back-btn="true" data-position="fixed">
 	
 		<!--Page Header for Categories-->
-		<div data-role="header" data-theme="b">
+		<header data-role="header" data-theme="b">
     		<h1>The Recipe Vault</h1>
-		</div>
+		</header>
 		
-		<div data-role="content" >
+		<section data-role="content" >
 		<h3>Browse Categories</h3>
 			<div class="ui-grid-solo">
 				<div class="ui-block-a">
@@ -263,29 +226,28 @@ ASD 1301
 					</ul>
 				</div>
 			</div>
-		</div>
+		</section>
 		
 		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
 					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
 				</ul>
 			</div>
-		</div>
+		</footer>
 	</div>
 	
 	<!--Recently Added (Newsfeed, Makeup for Project 2)-->
 	<div data-role="page" id="recentlyadded" data-add-back-btn="true" data-position="fixed">
 	
 		<!--Page Header for Recently Added-->
-		<div data-role="header" data-theme="b">
+		<header data-role="header" data-theme="b">
     		<h1>The Recipe Vault</h1>
-		</div>
+		</header>
 		
-		<div data-role="content" >
+		<section data-role="content" >
 		<h3>Recently Added Recipes</h3>
 			<div class="ui-grid-solo">
 				<div class="ui-block-a">
@@ -310,78 +272,41 @@ ASD 1301
 					</ul>
 				</div>
 			</div>
-		</div>
+		</section>
 		
 		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
 					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
 				</ul>
 			</div>
-		</div>
+		</footer>
 	</div>
 	
 	<!--Error Page-->
 	<div data-role="page" id="error" data-add-back-btn="true" data-filter="true">
-		<div data-role="header" data-theme="b" data-position="fixed">
+		<header data-role="header" data-theme="b" data-position="fixed">
     		<h1>The Recipe Vault</h1>
-		</div>
+		</header>
 		
-		<div data-role="content">
+		<section data-role="content">
 			<div id="feature1">
 		    	<a href="#additem" Data-ajax="false" ><img id ="feature" img src="images/addrecipe.png"/></a>
 		    </div><br/>
 		    <h2>This page is under construction</h2>
-		</div>
+		</section>
 	
 		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
 					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
 				</ul>
 			</div>
-		</div>
-	</div>
-		
-	<!--About Page-->
-	<div data-role="page" id="about" data-add-back-btn="true" data-filter="true">
-	
-		<!--Page Header for About-->
-		<div data-role="header" data-theme="b" data-position="fixed">
-    		<h1>The Recipe Vault</h1>
-		</div>
-		
-		<div data-role="content">
-		
-		<!--About Me-->
-		<h2>About the developer:</h2>
-		<p>Prior to entering this degree program I had zero experience with JavaScript, or JQuery/JQuery mobile. I work in an interesting industry that not a lot of people know about called affiliate marketing. Affiliate marketing is a form of internet marking. Most of the marketing we do is lead generation based. Because of the industry I work in I have had the chance to deal with some HTML and CSS. I have never had to create my own however, most of my experience was simply manipulating and refactoring the code that was already written by our in house developer.</p>
-		
-		<!--GitHub Master Link-->
-		<h4>GitHub Master: <a href="https://github.com/ampedej/MIU-Project4">Click Here</a></h4>
-		
-		<!--Gold App Git Link-->
-		<h4>GitHub Gold App: <a href="http://ampedej.github.com/MIU-Project4/GOLD/index.html">Click Here</a></h4>
-		
-		<!--Bronze App Git Link-->
-		<h4>GitHub Bronze App: <a href="http://ampedej.github.com/MIU-Project4/BRONZE/index.html">Click Here</a></h4>
-		
-		<!--Footer Navigation Bar-->
-		<div data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#about" data-icon="info">About</a></li>
-					<li><a href="#error" data-icon="search">Find Recipes</a></li><!--Link to some type of API or feed in the future-->
-				</ul>
-			</div>
-		</div>
+		</footer>
 	</div>
 
 	<!-- JavaScript -->	    
