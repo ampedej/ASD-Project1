@@ -4,7 +4,6 @@ Edward M Murray Jr
 ASD 1301
 */
 $('#home').on('pageinit', function(){
-	//code needed for home page goes here
 });
 	
 $('#additem').on('pageinit', function(){
@@ -101,8 +100,7 @@ $('#additem').on('pageinit', function(){
 	}
 	
 	function makeItemLinks(key, linksLi){
-	//Edit single item link.
-		/*var editLink = $('<a>');
+		var editLink = $('<a>');
 		editLink.attr("href", "#");
 		editLink.attr("key", key);
 		var editText = "Edit Recipe";
@@ -110,11 +108,9 @@ $('#additem').on('pageinit', function(){
 		editLink.text(editText);
 		linksLi.append(editLink);
 		
-		//Line break.
 		var breakTag = document.createElement('br');
-		linksLi.append(breakTag);*/
+		linksLi.append(breakTag);
 		
-		//Delete single item link.
 		var deleteLink = $('<a>');
 		deleteLink.attr("href", "#");
 		deleteLink.attr("key", key);
@@ -122,6 +118,26 @@ $('#additem').on('pageinit', function(){
 		deleteLink.on("click", deleteItem);
 		deleteLink.text(deleteText);
 		linksLi.append(deleteLink);
+	}
+	
+	function editItem(){ //Can't get this to work correctly.
+		var value = localStorage.getItem($(this).attr("key"));
+		var item = jQuery.parseJSON(value);
+		
+		toggleControls("off");
+		$('#displayLink').hide();
+		
+		$('#rname').val(item.rname[1]);
+		$('#dateadded').val(item.dateadded[1]);
+		var radios = $('input[name="category"]:checked').val();
+		$('#rtype').val(item.rtype[1]);
+		$('#ringredients').val(item.ringredients)[1];
+		$('#rdirections').val(item.rdirections)[1];
+		save.off("click", storeData);
+		$('#submit').val("Edit Recipe");	
+		var editSubmit = $('#submit');
+		editSubmit.on("click");
+		editSubmit.attr("key", this.key);
 	}
 	
 	function deleteItem(){
@@ -158,6 +174,9 @@ $('#additem').on('pageinit', function(){
 	
 	var clearLink = $('clear');
 	$('#clear').on("click", clearLocal);
+	
+	var save = $('submit');
+	$('#submit').on("click", storeData);
 	
 	$('#addNew').click(function() {
     location.reload();
