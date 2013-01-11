@@ -19,6 +19,7 @@ $('#additem').on('pageinit', function(){
 		}
 	});
 	
+	//-----Get Radio Value---
 	function getSelectedRadio(){
 		var radios = document.forms[0].category;
 		for(var i=0; i<radios.length; i++){
@@ -27,7 +28,7 @@ $('#additem').on('pageinit', function(){
 			}
 		}
 	}
-	
+	//---Toggle Controls----
 	function toggleControls(n){
 		switch(n){
 			case "on":
@@ -47,7 +48,7 @@ $('#additem').on('pageinit', function(){
 				return false;
 		}
 	}
-	
+	//---Save form---
 	function storeData(key){
 
 		var id					= Math.floor(Math.random()*100000001);
@@ -66,7 +67,7 @@ $('#additem').on('pageinit', function(){
 		alert("Recipe Saved!");
 		$("#recipeform").resetForm();
 	}
-	
+	//---Display Saved Data---
 	function getData(){
 		toggleControls("on")
 		if(localStorage.length === 0){
@@ -98,7 +99,7 @@ $('#additem').on('pageinit', function(){
 			makeItemLinks(localStorage.key(i), linksLi);
 		}
 	}
-	
+	//---Create edit and delete item links---
 	function makeItemLinks(key, linksLi){
 		var editLink = $('<a>');
 		editLink.attr("href", "#");
@@ -119,8 +120,8 @@ $('#additem').on('pageinit', function(){
 		deleteLink.text(deleteText);
 		linksLi.append(deleteLink);
 	}
-	
-	function editItem(){ //Can't get this to work correctly.
+	//---Edit item function. Can not get it to work---
+	function editItem(){ 
 		var value = localStorage.getItem($(this).attr("key"));
 		var item = jQuery.parseJSON(value);
 		
@@ -139,7 +140,7 @@ $('#additem').on('pageinit', function(){
 		editSubmit.on("click");
 		editSubmit.attr("key", this.key);
 	}
-	
+	//---Delete item---
 	function deleteItem(){
 		var ask = confirm("Are your sure you want to delete this recipe?");
 		if(ask){
@@ -150,7 +151,7 @@ $('#additem').on('pageinit', function(){
 			alert("Recipe was NOT deleted.");
 		}
 	}
-	
+	//---Clear all items in LocalStorage---
 	function clearLocal(){
 		if(localStorage.length === 0){
 			alert("No recipes to clear.");
@@ -161,7 +162,7 @@ $('#additem').on('pageinit', function(){
 			return false;
 		}
 	}
-	
+	//---Auto populate JSON data in to local storage---
 	function autoFillData(){
 		for(var n in json){
 			var id = Math.floor(Math.random()*100000001);
