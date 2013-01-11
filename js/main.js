@@ -121,7 +121,18 @@ $('#additem').on('pageinit', function(){
 		var deleteText = "Delete This recipe";
 		deleteLink.on("click", deleteItem);
 		deleteLink.text(deleteText);
-		$('#savedR').append(deleteLink);
+		linksLi.append(deleteLink);
+	}
+	
+	function deleteItem(){
+		var ask = confirm("Are your sure you want to delete this recipe?");
+		if(ask){
+			localStorage.removeItem($(this).attr("key"));
+			alert("Recipe was deleted!");
+			window.location.reload();
+		}else{
+			alert("Recipe was NOT deleted.");
+		}
 	}
 	
 	function clearLocal(){
