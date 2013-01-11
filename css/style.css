@@ -44,7 +44,7 @@ ul#errors li { color: #F00; font-size: 13px; line-height: 15px; }
 input#submit{ width: 120px; height: 35px; font-size: 13px; color: white; text-shadow: 0.1em 0.1em #000;  background-color: #384D49; border-radius: 8px;}
 
 /*Display data*/
-div#items ul:first-child ul { background-color: #CCD7D5; margin-top: 20px; padding-top: 15px; padding-bottom: 15px; margin-left: 1px; border-radius: 15px; border: solid #9aa6a4; border-width: 2px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  }
+div#items ul:first-child ul { background-color: #fcfcfc; margin-top: 20px; padding-top: 15px; padding-bottom: 15px; margin-left: 1px; border-radius: 15px; border: solid #9aa6a4; border-width: 2px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  }
 
 /*JQuery Styles*/
 

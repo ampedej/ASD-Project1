@@ -29,6 +29,26 @@ $('#additem').on('pageinit', function(){
 		}
 	}
 	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('#recipeform').hide();
+				$('#clear').show();
+				$('#displayLink').hide();
+				$('#addNew').show();
+				break;
+			case "off":
+				$('#recipeForm').show();
+				$('#clear').show();
+				$('#displayLink').show();
+				$('#addNew').hide();
+				$('#items').hide();
+				break;
+			default:
+				return false;
+		}
+	}
+	
 	function storeData(key){
 
 		var id					= Math.floor(Math.random()*100000001);
@@ -49,57 +69,89 @@ $('#additem').on('pageinit', function(){
 	}
 	
 	function getData(){
+		toggleControls("on")
 		if(localStorage.length === 0){
 			alert("There are no recipes stored. Default recipes were added.");
+			autoFillData();
 		}
-		var makeDiv = $('<div></div>');
-		$('#makeDiv').attr("id", "items");
-		var makeList = $('ul');
-		$('#makeDiv').append('makeList');
-		$('document.body').append('makeDiv');
-		$('items').show();
+		var makeDiv = $('<div>');
+		makeDiv.attr("id", "items");
+		var makeList = $('<ul>');
+		makeDiv.append(makeList);
+		$('#savedR').append(makeDiv);
+		$('#items').css('display', 'block' );
 		for(var i=0, length=localStorage.length; i<length; i++){
-			var makeLi = $('li');
-			var linksLi = $('li');
-			$('makeList').append('makeLi');
+			var makeLi = $('<li>');
+			var linksLi = $('<li>');
+			makeList.append(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
-			var obj = JSON.parse(value);
-			var makeSubList = $('ul');
-			$('makeLi').append('makeSubList');
+			var obj = jQuery.parseJSON(value);
+			var makeSubList = $('<ul>');
+			makeLi.append(makeSubList);
 			for (var n in obj){
-				var makeSubLi = $('li');
-				$('makeSubList').append('makeSubLi');
+				var makeSubLi = $('<li>');
+				makeSubList.append(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.innerHTML = optSubText;
-				$('makeSubList').append('linksLi');
+				makeSubLi.text(optSubText);
+				makeSubList.append(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi);
 		}
 	}
+	
+	function makeItemLinks(key, linksLi){
+	//Edit single item link.
+		/*var editLink = $('<a>');
+		editLink.attr("href", "#");
+		editLink.attr("key", key);
+		var editText = "Edit Recipe";
+		editLink.on("click", editItem);
+		editLink.text(editText);
+		linksLi.append(editLink);
+		
+		//Line break.
+		var breakTag = document.createElement('br');
+		linksLi.append(breakTag);*/
+		
+		//Delete single item link.
+		var deleteLink = $('<a>');
+		deleteLink.attr("href", "#");
+		deleteLink.attr("key", key);
+		var deleteText = "Delete This recipe";
+		deleteLink.on("click", deleteItem);
+		deleteLink.text(deleteText);
+		$('#savedR').append(deleteLink);
+	}
+	
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("No recipes to clear.");
+		}else{
+			localStorage.clear();
+			alert("All recipes have been deleted!");
+			window.location.reload();
+			return false;
+		}
+	}
+	
+	function autoFillData(){
+		for(var n in json){
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+	
 	var displayLink = $('displayLink');
 	$('#displayLink').on("click", getData);
 	
+	var clearLink = $('clear');
+	$('#clear').on("click", clearLocal);
+	
+	$('#addNew').click(function() {
+    location.reload();
+    });
+	
 });
 
-//The functions below can go inside or outside the pageinit function for the page in which it is needed.
-
-var autofillData = function (){
-	 
-};
-
-var getData = function(){
-
-};
-
-var storeData = function(data){
-	
-}; 
-
-var	deleteItem = function (){
-			
-};
-					
-var clearLocal = function(){
-
-};
 

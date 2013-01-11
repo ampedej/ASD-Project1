@@ -79,6 +79,14 @@ ASD 1301
     		<h1>The Recipe Vault</h1>
 		</header>
 		
+			<nav>
+				<ul>
+					<li><a href="#" id ="displayLink">Display Recipes</a></li>
+					<li><a href="#" id ="clear">Clear Recipes</a></li>
+					<li><a href="#" id ="addNew" style= "display:none;">Add Another Recipe</a></li>
+				</ul>
+			</nav>
+		
 		<section data-role="content">
 		
 			<form action="" method="post" id="recipeform" data-ajax="false" >
@@ -118,11 +126,9 @@ ASD 1301
 					<input type="reset" value="Reset Form" data-theme="a" />
 				</div>
 				
-				<div data-role="fieldcontain">
-					<a href="#" id ="displayLink">Display Recipes</a>
-				</div>
-				
 			</form>
+			<display id = "savedR">
+			</display>
 		</section>
 		<!--Footer Navigation Bar-->
 		<footer data-role="footer" data-position="fixed">
